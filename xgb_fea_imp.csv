@@ -1,0 +1,86 @@
+,feature,importance
+0,MES,472.0
+3,vuelos_paralelos,443.0
+2,hora,309.0
+1,temporada_alta,77.0
+80,DIANOM_Sabado,73.0
+77,DIANOM_Lunes,71.0
+78,DIANOM_Martes,68.0
+75,DIANOM_Domingo,61.0
+81,DIANOM_Viernes,56.0
+79,DIANOM_Miercoles,55.0
+76,DIANOM_Jueves,53.0
+16,OPERA_Grupo LATAM,46.0
+25,OPERA_Sky Airline,28.0
+33,SIGLADES_Buenos Aires,24.0
+27,SIGLADES_Antofagasta,22.0
+15,OPERA_Gol Trans,17.0
+11,OPERA_Avianca,17.0
+61,SIGLADES_Punta Arenas,16.0
+38,SIGLADES_Concepcion,16.0
+21,OPERA_Latin American Wings,16.0
+13,OPERA_Copa Air,16.0
+48,SIGLADES_Lima,15.0
+32,SIGLADES_Bogota,15.0
+68,SIGLADES_Sao Paulo,13.0
+59,SIGLADES_Puerto Montt,13.0
+34,SIGLADES_Calama,13.0
+84,periodo_dia_tarde,13.0
+9,OPERA_American Airlines,13.0
+44,SIGLADES_Iquique,12.0
+82,periodo_dia_mañana,12.0
+64,SIGLADES_Rio de Janeiro,12.0
+26,OPERA_United Airlines,11.0
+4,OPERA_Aerolineas Argentinas,11.0
+6,OPERA_Air Canada,11.0
+69,SIGLADES_Sydney,11.0
+83,periodo_dia_noche,9.0
+5,OPERA_Aeromexico,9.0
+53,SIGLADES_Miami,9.0
+47,SIGLADES_La Serena,9.0
+56,SIGLADES_Nueva York,9.0
+29,SIGLADES_Asuncion,9.0
+39,SIGLADES_Copiapo,9.0
+31,SIGLADES_Balmaceda,9.0
+40,SIGLADES_Cordoba,8.0
+14,OPERA_Delta Air,8.0
+54,SIGLADES_Montevideo,8.0
+28,SIGLADES_Arica,8.0
+7,OPERA_Air France,7.0
+17,OPERA_Iberia,7.0
+70,SIGLADES_Temuco,7.0
+65,SIGLADES_Rosario,7.0
+36,SIGLADES_Castro (Chiloe),7.0
+41,SIGLADES_Dallas,7.0
+23,OPERA_Plus Ultra Lineas Aereas,7.0
+30,SIGLADES_Auckland N.Z.,7.0
+60,SIGLADES_Puerto Natales,7.0
+22,OPERA_Oceanair Linhas Aereas,7.0
+42,SIGLADES_Florianapolis,7.0
+51,SIGLADES_Melbourne,7.0
+19,OPERA_K.L.M.,7.0
+62,SIGLADES_Punta Cana,6.0
+49,SIGLADES_Los Angeles,6.0
+73,SIGLADES_Ushuia,6.0
+46,SIGLADES_La Paz,6.0
+8,OPERA_Alitalia,5.0
+18,OPERA_JetSmart SPA,5.0
+52,SIGLADES_Mendoza,5.0
+74,SIGLADES_Valdivia,5.0
+66,"SIGLADES_San Juan, Arg.",5.0
+45,SIGLADES_Isla de Pascua,4.0
+20,OPERA_Lacsa,4.0
+63,SIGLADES_Quito,4.0
+24,OPERA_Qantas Airways,3.0
+50,SIGLADES_Madrid,3.0
+10,OPERA_Austral,3.0
+37,SIGLADES_Ciudad de Mexico,3.0
+55,SIGLADES_Neuquen,3.0
+12,OPERA_British Airways,3.0
+43,SIGLADES_Guayaquil,2.0
+71,SIGLADES_Toronto,2.0
+35,SIGLADES_Cancun,2.0
+72,SIGLADES_Tucuman,1.0
+57,SIGLADES_Orlando,1.0
+67,SIGLADES_Santa Cruz,1.0
+58,SIGLADES_Osorno,1.0
