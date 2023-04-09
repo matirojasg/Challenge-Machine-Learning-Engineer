@@ -1,13 +1,10 @@
-from flask import Flask, jsonify, request
-import joblib
+from fastapi import FastAPI
+from pydantic import BaseModel
+import pickle
+import uvicorn
 import pandas as pd
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-import pickle 
+from sklearn.preprocessing import StandardScaler
 
-app = Flask(__name__)
-
-# Cargar modelo entrenado
 model = pickle.load(open('models/model.pkl', 'rb'))
 original_columns = pickle.load(open('models/columns.pkl', 'rb'))
 
@@ -15,16 +12,26 @@ original_columns = pickle.load(open('models/columns.pkl', 'rb'))
 cat_cols = ['OPERA', 'SIGLADES', 'DIANOM', 'periodo_dia']
 num_cols = ['MES', 'temporada_alta', 'hora', 'vuelos_paralelos']
 
+# Definir la clase que representa el modelo de entrada
+class InputModel(BaseModel):
+    MES: int
+    temporada_alta: int
+    hora: int
+    vuelos_paralelos: int
+    OPERA: str
+    SIGLADES: str
+    DIANOM: str
+    periodo_dia: str
+
+# Crear una instancia de la aplicación FastAPI
+app = FastAPI()
 
 # Ruta de la API REST para hacer predicciones
-@app.route('/predict', methods=['POST'])
-def predict():
-    # Obtener los datos de entrada del usuario
-    input_data = request.get_json()
-
+@app.post('/predict')
+def predict(input_data: InputModel):
     # Crear un dataframe a partir de los datos de entrada
-    input_df = pd.DataFrame.from_dict([input_data])
- 
+    input_df = pd.DataFrame([input_data.dict()])
+
     # Aplicar el preprocesamiento a los datos de entrada
     X = pd.get_dummies(input_df, columns=cat_cols)
 
@@ -33,13 +40,17 @@ def predict():
 
     # Realizar la predicción utilizando el modelo
     X = X.reindex(labels = original_columns, axis = 1, fill_value = 0)
-  
-
     prediction = model.predict(X)[0]
+    proba = model.predict_proba(X).tolist()
+    proba = list(map(lambda x: round(x,2), proba[0]))
 
     # Devolver la predicción en formato JSON
-    return jsonify({'prediction': int(prediction)})
+    return {
+        'prediction': int(prediction),
+        'proba': proba
+    }
 
-if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="localhost", port=8000)
 
