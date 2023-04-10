@@ -5,7 +5,6 @@ import uvicorn
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-
 # Definir las columnas categóricas y numéricas
 cat_cols = ["OPERA", "SIGLADES", "DIANOM", "periodo_dia"]
 num_cols = ["MES", "temporada_alta", "hora", "vuelos_paralelos"]
@@ -25,22 +24,27 @@ class InputModel(BaseModel):
 # Crear una instancia de la aplicación FastAPI
 app = FastAPI()
 
+# Carga de modelos y columnas una vez instanciada la aplicación
 model = pickle.load(open("models/model.pkl", "rb"))
 original_columns = pickle.load(open("models/columns.pkl", "rb"))
+
 # Ruta de la API REST para hacer predicciones
 @app.post("/predict")
 def predict(input_data: InputModel):
     # Crear un dataframe a partir de los datos de entrada
     input_df = pd.DataFrame([input_data.dict()])
 
-    # Aplicar el preprocesamiento a los datos de entrada
+    # Aplicar el preprocesamiento a los datos categóricos
     X = pd.get_dummies(input_df, columns=cat_cols)
 
+    # Aplicar el preprocesamiento a los datos numéricos
     scaler = StandardScaler()
     X[num_cols] = scaler.fit_transform(X[num_cols])
 
-    # Realizar la predicción utilizando el modelo
+    # Conservar columnas originales
     X = X.reindex(labels=original_columns, axis=1, fill_value=0)
+    
+    # Realizar la predicción utilizando el modelo
     prediction = model.predict(X)[0]
     proba = model.predict_proba(X).tolist()
     proba = list(map(lambda x: round(x, 2), proba[0]))

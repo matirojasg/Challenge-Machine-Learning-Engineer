@@ -1,7 +1,7 @@
 import requests
 import json
 
-# Datos del vuelo a predecir.
+# Datos del vuelo para predecir delay.
 input_data = {
     "OPERA": "Aeromexico",
     "SIGLADES": "MIAMI",
